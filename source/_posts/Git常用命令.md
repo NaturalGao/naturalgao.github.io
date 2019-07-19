@@ -26,6 +26,12 @@ git --version
 ```git
 git config --global user.email "xxxx@qq.com"
 git config --global user.name "xxxx"
+
+# 生成秘钥
+ssh-keygen -t rsa -C "xxx@qq.com"
+
+# 测试
+ssh -T git@github.com
 ```
 
 设置默认使用文本编辑器
