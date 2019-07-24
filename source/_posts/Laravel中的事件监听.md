@@ -1,7 +1,8 @@
 ---
 title: Laravel 事件监听
 tags:
-  - 博客
+  - Laravel
+  - PHP
 abbrlink: 6b404b74
 date: 2019-07-15 15:33:25
 

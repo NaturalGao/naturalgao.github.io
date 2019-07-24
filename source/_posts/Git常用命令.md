@@ -1,9 +1,9 @@
 ---
 title: Git常用命令
 categories:
-  - 博客
+  - Git
 tags:
-  - 博客
+  - Git
 abbrlink: caff8000
 date: 2019-07-15 13:08:58
 
