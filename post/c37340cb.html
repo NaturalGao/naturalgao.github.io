@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta name="google-site-verification" content="DwDg4EuywHWNZUkTC7sG0WGv_UQekM4uRtOoaGuDJHc">
+<meta name="baidu-site-verification" content="hkLiBHH93D">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="数据库维护命令">
+
+
+
+
+  <meta name="keywords" content="Database,">
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NaturalGao">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://naturalgao.github.io/post/c37340cb.html">
+
+
+<meta name="description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 1. 表 修改表名字  ALTER TABLE stu RENAME stus RENAME TABLE stus to stu  生成备份表  CREATE TABLE stu_bak SELECT * FROM stu  修改字符集  // 修改字符集为 gbk ALTER TABLE stu_b">
+<meta name="keywords" content="Database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库维护命令">
+<meta property="og:url" content="https://naturalgao.github.io/post/c37340cb.html">
+<meta property="og:site_name" content="NaturalGao">
+<meta property="og:description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 1. 表 修改表名字  ALTER TABLE stu RENAME stus RENAME TABLE stus to stu  生成备份表  CREATE TABLE stu_bak SELECT * FROM stu  修改字符集  // 修改字符集为 gbk ALTER TABLE stu_b">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-24T06:40:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库维护命令">
+<meta name="twitter:description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 1. 表 修改表名字  ALTER TABLE stu RENAME stus RENAME TABLE stus to stu  生成备份表  CREATE TABLE stu_bak SELECT * FROM stu  修改字符集  // 修改字符集为 gbk ALTER TABLE stu_b">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+
+  <link href="/plugins/prettify/prettify.css" rel="stylesheet">
+
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b733e1eaeacbf8f87d3be047f28c3973";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <title> 数据库维护命令 - NaturalGao </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">NaturalGao</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/atom.xml">
+                            
+                            
+                                订阅
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          数据库维护命令
+        
+      </h1>
+
+      <time class="post-time">
+          2019-07-19
+      </time>
+    </header>
+
+
+
+    
+            
+  <div class="toc-container">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-表"><span class="toc-text">1. 表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-字段"><span class="toc-text">2. 字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主键"><span class="toc-text">主键</span></a></li></ol></li></ol>
+  </div> 
+
+
+            <div class="post-content">
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><u>数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的</u></p>
+<h4 id="1-表"><a href="#1-表" class="headerlink" title="1. 表"></a>1. 表</h4><blockquote>
+<p>修改表名字</p>
+</blockquote>
+<pre><code>ALTER TABLE stu RENAME stus
+RENAME TABLE stus to stu
+</code></pre><blockquote>
+<p>生成备份表</p>
+</blockquote>
+<pre><code>CREATE TABLE stu_bak SELECT * FROM stu
+</code></pre><blockquote>
+<p>修改字符集</p>
+</blockquote>
+<pre><code>// 修改字符集为 gbk
+ALTER TABLE stu_bak charset gbk
+</code></pre><blockquote>
+<p>清空表数据</p>
+</blockquote>
+<pre><code>DELETE FROM stu_bak
+TRUNCATE stu_bak
+</code></pre><blockquote>
+<p>删除表</p>
+</blockquote>
+<pre><code>DROP TABLE stu_bak
+DROP TABLE if EXISTS stu_bak    //加条件判断,存在才删除
+</code></pre><h4 id="2-字段"><a href="#2-字段" class="headerlink" title="2. 字段"></a>2. 字段</h4><blockquote>
+<p>修改字段</p>
+</blockquote>
+<pre><code>ALTER TABLE stu2 MODIFY sname varchar(50) no null
+ALTER TABLE stu2 CHANGE sname name char(30) no null
+</code></pre><blockquote>
+<p>添加字段</p>
+</blockquote>
+<pre><code>//添加 字段 sex  类型为 smallint 默认 null
+ALTER TABLE stu2 ADD sex smallint default null
+</code></pre><blockquote>
+<p>移动位置</p>
+</blockquote>
+<pre><code>// 添加emailt 字段 并且移动到 id 后面
+ALTER TABLE stu2 ADD email varchar(50) default null AFTER id
+// 添加字段到 第一个位置
+ALTER TABLE stu2 ADD qq varchar(30) default null first
+</code></pre><blockquote>
+<p>删除字段</p>
+</blockquote>
+<pre><code>ALTER TABLE stu2 drop sex;
+</code></pre><h4 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h4><blockquote>
+<p>添加主键 </p>
+</blockquote>
+<pre><code>ALTER TABLE stu ADD PRIMARY KEY (id)
+</code></pre><blockquote>
+<p>添加自增列</p>
+</blockquote>
+<pre><code>ALTER TABLE stu MONIFY id int not null AUTO_INCREMENT
+</code></pre><blockquote>
+<p>去除自增列</p>
+</blockquote>
+<pre><code>ALTER TABLE stu MODIFY id init no null
+</code></pre><blockquote>
+<p>删除主键 (必须去除自增列)</p>
+</blockquote>
+<pre><code>ALTER TABLE stu DROP PRIMARY KEY
+</code></pre><blockquote>
+<p>添加自增和主键</p>
+</blockquote>
+<pre><code>ALTER TABLE stu MODIFY id int not null AUTO_INCREMENT,add PRIMARY key(id)
+</code></pre>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+      <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <span>本文作者：</span>NaturalGao
+        </li>
+        <li class="post-copyright-link">
+          <span>本文链接：</span>
+          <a href="https://naturalgao.github.io//post/c37340cb.html" title="数据库维护命令">https://naturalgao.github.io/post/c37340cb.html</a>
+        </li>
+        <li class="post-copyright-license">
+          <span>版权： </span>
+          本站文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议，请勿用于商业，转载注明出处！
+        </li>
+      </ul>
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Database/">Database</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/post/78bea448.html">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">PHP正则表达式</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/post/6b404b74.html">
+        <span class="next-text nav-default">Laravel 事件监听</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+      
+        
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'b3280731ffdf6d76fd46',
+            clientSecret: 'c8be25dc6a2e4b1dcafab6d6cce7242791f46a3e',
+            repo: 'naturalgao.github.io',
+            owner: 'NaturalGao',
+            admin: 'NaturalGao',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+      
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">NaturalGao.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+<!--prettify代码高亮脚本引入-->
+
+    <script src="/plugins/prettify/prettify.js"></script>
+    <script type="text/javascript">
+    jQuery(function($){
+        $('pre').addClass('prettyprint');
+        prettyPrint();
+    });
+    </script>
+
+
+  </body>
+</html>

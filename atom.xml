@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>NaturalGao</title>
+  
+  <subtitle>NaturalGao的个人博客</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://naturalgao.github.io/"/>
+  <updated>2019-07-24T15:48:51.000Z</updated>
+  <id>https://naturalgao.github.io/</id>
+  
+  <author>
+    <name>NaturalGao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>代码风格配置</title>
+    <link href="https://naturalgao.github.io/post/fb3d4b4.html"/>
+    <id>https://naturalgao.github.io/post/fb3d4b4.html</id>
+    <published>2019-07-24T15:13:20.000Z</published>
+    <updated>2019-07-24T15:48:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在多人开发协作中，每个人的开发风格都不一样，遵循标准的代码规范有利于多人协作，日后的维护成本也低。</p><h1 id="PHP-CodeSniffer"><a href="#PHP-CodeSniffer" class="headerlink" title="PHP_CodeSniffer"></a>PHP_CodeSniffer</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>这是一个代码风格检测工具，包含两个脚本：phpcs和phpcbf</p><blockquote><p>phpcs</p></blockquote><p>检测代码风格</p><blockquote><p>phpcbf</p></blockquote><p>修正代码风格</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>composer global require &quot;squizlabs/php_codesniffer=*&quot;</code></pre><p>安装完成后会在全局依赖包目录生成phpcbf 和 phpcs 文件</p><blockquote><p>window下 是.bat</p></blockquote><p><img src="/Users/mac/Library/Application Support/typora-user-images/image-20190724233041850.png" alt="image-20190724233041850"></p><blockquote><p>查看composer全局依赖包路径</p></blockquote><pre><code>composer global config bin-dir --absolute</code></pre><h1 id="PhpStorm"><a href="#PhpStorm" class="headerlink" title="PhpStorm"></a>PhpStorm</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>位置：file-&gt;setting-&gt;Tools-&gt;External Tools</p><blockquote><p>添加 phpcs</p></blockquote><p><img src="/Users/mac/Library/Application Support/typora-user-images/image-20190724233326358.png" alt="image-20190724233326358"></p><blockquote><p>添加phpcbf</p></blockquote><p><img src="/Users/mac/Library/Application Support/typora-user-images/image-20190724233429626.png" alt="image-20190724233429626"></p><h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p>Program：全局composer依赖包phpcs/phpcbf路径</p><p>例如我的安装路径为：</p><pre><code>/Users/mac/.composer/vendor/bin/phpcsProgram：/Users/mac/.composer/vendor/bin/phpcs</code></pre><p>Arguments:：是<code>$FileDir$/$FileName$</code></p><p>Working directory：是<code>$ProjectFileDir$</code></p><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p><img src="/Users/mac/Library/Application Support/typora-user-images/image-20190724234143661.png" alt="image-20190724234143661"></p><h1 id="git提交时对代码进行检查"><a href="#git提交时对代码进行检查" class="headerlink" title="git提交时对代码进行检查"></a>git提交时对代码进行检查</h1><h2 id="Php-cc"><a href="#Php-cc" class="headerlink" title="Php-cc"></a>Php-cc</h2><p>PHP code check 利用git hook、phplint、phpcs，在code commit的时候对php代码进行语法检测、代码风格检查，如果有问题，不允许提交。<a href="https://github.com/wowo-zZ/php-cc" target="_blank" rel="noopener">github</a></p><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><pre><code>composer require zhenggui/php-cc</code></pre><p>安装成功后执行</p><pre><code>composer exec phpcc install</code></pre><p>该命令会检查phplint、phpcs的安装情况，并将git原有的pre-commit钩子备份，再将php-cc的pre-commit钩子拷贝至<code>.git/hooks</code>中。</p><p>这样，在git commit之前，就会执行phplint和phpcs检查待提交的文件，如果不满足要求，则会阻止代码提交。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在多人开发协作中，每个人的开发风格都不一样，遵循标准的代码规范有利于多人协作，日后的维护成本也低。&lt;/p&gt;
+&lt;h1 id=&quot;PHP-Code
+      
+    
+    </summary>
+    
+    
+      <category term="其它" scheme="https://naturalgao.github.io/tags/%E5%85%B6%E5%AE%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP正则表达式</title>
+    <link href="https://naturalgao.github.io/post/78bea448.html"/>
+    <id>https://naturalgao.github.io/post/78bea448.html</id>
+    <published>2019-07-24T05:46:19.000Z</published>
+    <updated>2019-07-24T06:38:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP正则表达式"><a href="#PHP正则表达式" class="headerlink" title="PHP正则表达式"></a>PHP正则表达式</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><blockquote><p>作用</p></blockquote><p>分割、查找、匹配、替换字符串</p><blockquote><p>分隔符</p></blockquote><p>正斜线（/）、hash符号（#）以及取反符号（~）</p><blockquote><p>通用原子</p></blockquote><ol><li>\d    (0-9)</li><li>\D （除了0-9）</li><li>\w （数字，字母，下划线）</li><li>\W （除了数字，字母，下划线）</li><li>\s （空白符）</li><li>\S （除了空白符）</li></ol><blockquote><p>元字符</p></blockquote><ol><li>.（除了换行符外的任意字符）</li><li>*（匹配前面的单元出现0-n次）</li><li>? （匹配前面的单元出现0-1次）</li><li>^（必须以某个单元开头）</li><li>$ （必须以某个单元结尾）</li><li>+（出现一次或者多次）</li><li>{n} （出现n次）</li><li>{n,} （大于等于n次）</li><li>{n,m} （大于等于n并且小于等于m次）</li><li>[] （集合，[abc]匹配a或者b或者c）</li><li>[^] （取反）</li><li>| （或者）</li><li>[-] （范围）</li></ol><blockquote><p>模式修正符</p></blockquote><ol><li>i</li><li>m</li><li>e</li><li>s</li><li>U</li><li>x</li><li>A</li><li>D</li><li>u</li></ol><h2 id="后向引用"><a href="#后向引用" class="headerlink" title="后向引用"></a>后向引用</h2><pre><code>$str = &#39;&lt;b&gt;abc&lt;/b&gt;&#39;;$pattern = &#39;/&lt;b&gt;(.*)&lt;\/b&gt;/&#39;;preg_replace($pattern, &#39;\\1&#39;,$str);</code></pre><h2 id="贪婪模式"><a href="#贪婪模式" class="headerlink" title="贪婪模式"></a>贪婪模式</h2><pre><code>$str = &#39;&lt;b&gt;abc&lt;/b&gt;&lt;b&gt;bcd&lt;/b&gt;&#39;;$pattern = &#39;/&lt;b&gt;.* &lt;\/b&gt;/&#39;;$preg_replace_all($pattern,&#39;\\1&#39;,$str);</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;PHP正则表达式&quot;&gt;&lt;a href=&quot;#PHP正则表达式&quot; class=&quot;headerlink&quot; title=&quot;PHP正则表达式&quot;&gt;&lt;/a&gt;PHP正则表达式&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="https://naturalgao.github.io/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库维护命令</title>
+    <link href="https://naturalgao.github.io/post/c37340cb.html"/>
+    <id>https://naturalgao.github.io/post/c37340cb.html</id>
+    <published>2019-07-19T07:35:36.000Z</published>
+    <updated>2019-07-24T06:40:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><u>数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的</u></p><h4 id="1-表"><a href="#1-表" class="headerlink" title="1. 表"></a>1. 表</h4><blockquote><p>修改表名字</p></blockquote><pre><code>ALTER TABLE stu RENAME stusRENAME TABLE stus to stu</code></pre><blockquote><p>生成备份表</p></blockquote><pre><code>CREATE TABLE stu_bak SELECT * FROM stu</code></pre><blockquote><p>修改字符集</p></blockquote><pre><code>// 修改字符集为 gbkALTER TABLE stu_bak charset gbk</code></pre><blockquote><p>清空表数据</p></blockquote><pre><code>DELETE FROM stu_bakTRUNCATE stu_bak</code></pre><blockquote><p>删除表</p></blockquote><pre><code>DROP TABLE stu_bakDROP TABLE if EXISTS stu_bak    //加条件判断,存在才删除</code></pre><h4 id="2-字段"><a href="#2-字段" class="headerlink" title="2. 字段"></a>2. 字段</h4><blockquote><p>修改字段</p></blockquote><pre><code>ALTER TABLE stu2 MODIFY sname varchar(50) no nullALTER TABLE stu2 CHANGE sname name char(30) no null</code></pre><blockquote><p>添加字段</p></blockquote><pre><code>//添加 字段 sex  类型为 smallint 默认 nullALTER TABLE stu2 ADD sex smallint default null</code></pre><blockquote><p>移动位置</p></blockquote><pre><code>// 添加emailt 字段 并且移动到 id 后面ALTER TABLE stu2 ADD email varchar(50) default null AFTER id// 添加字段到 第一个位置ALTER TABLE stu2 ADD qq varchar(30) default null first</code></pre><blockquote><p>删除字段</p></blockquote><pre><code>ALTER TABLE stu2 drop sex;</code></pre><h4 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h4><blockquote><p>添加主键 </p></blockquote><pre><code>ALTER TABLE stu ADD PRIMARY KEY (id)</code></pre><blockquote><p>添加自增列</p></blockquote><pre><code>ALTER TABLE stu MONIFY id int not null AUTO_INCREMENT</code></pre><blockquote><p>去除自增列</p></blockquote><pre><code>ALTER TABLE stu MODIFY id init no null</code></pre><blockquote><p>删除主键 (必须去除自增列)</p></blockquote><pre><code>ALTER TABLE stu DROP PRIMARY KEY</code></pre><blockquote><p>添加自增和主键</p></blockquote><pre><code>ALTER TABLE stu MODIFY id int not null AUTO_INCREMENT,add PRIMARY key(id)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;&lt;u&gt;数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的&lt;/u&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1-表&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="Database" scheme="https://naturalgao.github.io/tags/Database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Laravel 事件监听</title>
+    <link href="https://naturalgao.github.io/post/6b404b74.html"/>
+    <id>https://naturalgao.github.io/post/6b404b74.html</id>
+    <published>2019-07-15T07:33:25.000Z</published>
+    <updated>2019-07-24T06:39:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Laravel 框架中的事件监听</p><a id="more"></a><h1 id="1-什么是“事件监听“？"><a href="#1-什么是“事件监听“？" class="headerlink" title="1.什么是“事件监听“？"></a>1.什么是“事件监听“？</h1><p>从字面上就可以看出来，无非就是监听一个事件。</p><h1 id="2-使用场景"><a href="#2-使用场景" class="headerlink" title="2.使用场景"></a>2.使用场景</h1><p>例句一个物流发货的场景：我有个小程序商城，用户下单后需要在后台发货，发完货后我想在微信发送个模块通知提示用户，我想了想用户不登录微信或者把消息提示关闭了，那岂不是不能实时通知用户已经发货了，我决定再加个短信通知用户。有了模块通知，短信通知后我还嫌不够…然后我继续加…. <strong>通常我们会这么写：</strong></p><pre><code>&lt;?phpnamespace App\Http\Controllers;use Illuminate\Http\Request;class OrderController extends Controller{    public function sendGoods()    {        //@todo:发货逻辑        //@todo:模块通知逻辑        //@todo:短信通知逻辑        //@todo:等等....    }}</code></pre><p><strong>这样写不是不可以，但是逻辑功能越来越多，控制器只会变得臃肿起来，后期不便于维护。这时候可能会有人说，那我可以封装起来啊，是的，你可以封装起来，然后就可以用简短的代码来实现。但是实际项目中，会涉及多人开发，这样就不方便了。所以推荐使用laravel自带的“事件监听“… </strong></p><h1 id="3-使用”事件监听”优化代码"><a href="#3-使用”事件监听”优化代码" class="headerlink" title="3.使用”事件监听”优化代码"></a>3.使用”事件监听”优化代码</h1><p>3.1 打开终端-&gt;切换到项目根目录-&gt;使用artisan命令创建事件监听文件</p><pre><code>php artisan make:event OrderEvent</code></pre><p>执行完命令，发现 app/Events 目录下多了个 OrderEvent.php 文件</p><p><img src="https://cdn.learnku.com/uploads/images/201905/11/29780/xNg7jaQ9Jr.png!large" alt="记录下学习笔记（Laravel 中的事件监听）"></p><p>我们可以打开看看… </p><pre><code>&lt;?phpnamespace App\Events;use Illuminate\Broadcasting\Channel;use Illuminate\Queue\SerializesModels;use Illuminate\Broadcasting\PrivateChannel;use Illuminate\Broadcasting\PresenceChannel;use Illuminate\Foundation\Events\Dispatchable;use Illuminate\Broadcasting\InteractsWithSockets;use Illuminate\Contracts\Broadcasting\ShouldBroadcast;class OrderEvent{    use Dispatchable, InteractsWithSockets, SerializesModels;    /**     * Create a new event instance.     *     * @return void     */    public function __construct()    {        //    }    /**     * Get the channels the event should broadcast on.     *     * @return \Illuminate\Broadcasting\Channel|array     */    public function broadcastOn()    {        return new PrivateChannel(&#39;channel-name&#39;);    }}</code></pre><p>简单的修改下构造函数，因为到时候我们可能会 传入 购买商品的 用户</p><pre><code>&lt;?phpnamespace App\Events;use App\User;use Illuminate\Broadcasting\Channel;use Illuminate\Queue\SerializesModels;use Illuminate\Broadcasting\PrivateChannel;use Illuminate\Broadcasting\PresenceChannel;use Illuminate\Foundation\Events\Dispatchable;use Illuminate\Broadcasting\InteractsWithSockets;use Illuminate\Contracts\Broadcasting\ShouldBroadcast;class OrderEvent{    use Dispatchable, InteractsWithSockets, SerializesModels;    public $user;    /**     * Create a new event instance.     *     * @return void     */    public function __construct(User $user)    {        $this-&gt;user = $user;    }    /**     * Get the channels the event should broadcast on.     *     * @return \Illuminate\Broadcasting\Channel|array     */    public function broadcastOn()    {        return new PrivateChannel(&#39;channel-name&#39;);    }}</code></pre><p><strong>3.2 绑定事件</strong></p><p>打开 app/Providers/EventServiceProvider.php 文件，找到 成员属性 listen下：</p><pre><code>    protected $listen = [        Registered::class =&gt; [            SendEmailVerificationNotification::class,        ],    ];</code></pre><p>把事件关联起来，修改为：</p><pre><code>    protected $listen = [        Registered::class =&gt; [            SendEmailVerificationNotification::class,        ],        &#39;App\Events\OrderEvent&#39; =&gt; [            &#39;App\Listeners\sendModel&#39;,            &#39;App\Listeners\sendPhone&#39;,        ]    ];</code></pre><p>接着打开终端，执行 artisan 命令 生成 监听文件</p><pre><code>php artisan event:generate</code></pre><p>然后我们可以在 app/Listeners 文件下发现多了两个文件</p><p><img src="https://cdn.learnku.com/uploads/images/201905/11/29780/O8o5oDy5J3.png!large" alt="记录下学习笔记（Laravel 中的事件监听）"></p><p>打开这两个文件，依次修改为：</p><p>sendModel.php:</p><pre><code>&lt;?phpnamespace App\Listeners;use App\Events\OrderEvent;use Illuminate\Queue\InteractsWithQueue;use Illuminate\Contracts\Queue\ShouldQueue;class sendModel{    /**     * Create the event listener.     *     * @return void     */    public function __construct()    {        //    }    /**     * Handle the event.     *     * @param  OrderEvent  $event     * @return void     */    public function handle(OrderEvent $event)    {        $user = $event-&gt;user; // @todo: 当前用户        //@todo：发送消息模板逻辑        dump(&#39;发送消息模板成功&#39;);    }}</code></pre><p>sendPhone.php:</p><pre><code>&lt;?phpnamespace App\Listeners;use App\Events\OrderEvent;use Illuminate\Queue\InteractsWithQueue;use Illuminate\Contracts\Queue\ShouldQueue;class sendPhone{    /**     * Create the event listener.     *     * @return void     */    public function __construct()    {        //    }    /**     * Handle the event.     *     * @param  OrderEvent  $event     * @return void     */    public function handle(OrderEvent $event)    {        $user = $event-&gt;user; // @todo: 当前用户        //@todo：发送短信消息        dump(&#39;发送短信消息成功&#39;);    }}</code></pre><p><strong>3.3 最后我们再打开 OrderController.php 修改为:</strong></p><pre><code>&lt;?phpnamespace App\Http\Controllers;use App\Events\OrderEvent;use App\User;use Illuminate\Http\Request;class OrderController extends Controller{    public function sendGoods()    {        $user = User::find(1);        //@todo:发货逻辑        dump(&#39;发货成功!!&#39;);        event(new OrderEvent($user));    }}</code></pre><p><strong>3.4 绑定路由</strong></p><pre><code>Route::get(&#39;/sendGoods&#39;,&#39;OrderController@sendGoods&#39;);</code></pre><p>3.5 访问路由结果：</p><p><img src="https://cdn.learnku.com/uploads/images/201905/11/29780/acd0gtE61w.png!large" alt="记录下学习笔记（Laravel 中的事件监听）"></p><h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><p>这样是不是简单，便于维护了许多呢… 还不会的小伙伴赶紧去试试吧！如果对你有帮助，请给个赞，谢谢！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Laravel 框架中的事件监听&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Laravel" scheme="https://naturalgao.github.io/tags/Laravel/"/>
+    
+      <category term="PHP" scheme="https://naturalgao.github.io/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git常用命令</title>
+    <link href="https://naturalgao.github.io/post/caff8000.html"/>
+    <id>https://naturalgao.github.io/post/caff8000.html</id>
+    <published>2019-07-15T05:08:58.000Z</published>
+    <updated>2019-07-24T06:40:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>git 版本控制 常用的命令</p><a id="more"></a><h4 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h4><pre><code>git --version</code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><blockquote><p>配置文件 为    <strong>~/.gitconfig（全局）</strong> <strong>.git/config （局部）</strong></p></blockquote><pre><code class="git">git config --global user.email &quot;xxxx@qq.com&quot;git config --global user.name &quot;xxxx&quot;# 生成秘钥ssh-keygen -t rsa -C &quot;xxx@qq.com&quot;# 测试ssh -T git@github.com</code></pre><p>设置默认使用文本编辑器</p><pre><code>git config --global core.editor sub1</code></pre><h4 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h4><blockquote><p>取别名，缩减代码</p></blockquote><pre><code>git config --global alias.c commit</code></pre><h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><blockquote><h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5></blockquote><pre><code>git init</code></pre><blockquote><h5 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h5></blockquote><pre><code>git clone https://github.com/NaturalGao/naturalgao.github.io.git</code></pre><blockquote><h5 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h5></blockquote><pre><code>git add .       //添加全部文件git add a.php   //添加a.php文件</code></pre><blockquote><h5 id="修改文件名"><a href="#修改文件名" class="headerlink" title="修改文件名"></a>修改文件名</h5></blockquote><pre><code>git mv a.php b.php  //修改a.php文件名为b.php</code></pre><blockquote><h5 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h5></blockquote><pre><code>git rm a.txt   //版本库和本地文件都会删除git rm --cached a.txt //只删除版本库，保留本地</code></pre><blockquote><h5 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h5></blockquote><pre><code>git commit -m &quot;描述&quot;</code></pre><blockquote><h5 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h5></blockquote><pre><code>git status</code></pre><h4 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h4><blockquote><p>文件： .gitignore</p></blockquote><pre><code>*.txt     //忽略所有txt文件/vendor   //忽略vendor文件夹</code></pre><h4 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h4><blockquote><p>简单描述</p></blockquote><pre><code>git log</code></pre><blockquote><p>查看变动信息</p></blockquote><pre><code>git log -p</code></pre><blockquote><p>最近一次提交</p></blockquote><pre><code>git log -p -1</code></pre><blockquote><p>查看简短信息</p></blockquote><pre><code>git log --oneline</code></pre><blockquote><p>查看变动的文件</p></blockquote><pre><code>git log --name-only</code></pre><blockquote><p>查看类型变化</p></blockquote><pre><code>git log --name-status</code></pre><h4 id="修改最新一次提交"><a href="#修改最新一次提交" class="headerlink" title="修改最新一次提交"></a>修改最新一次提交</h4><pre><code>git commit --amend</code></pre><h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><blockquote><p>查看分支</p></blockquote><pre><code>git branch</code></pre><blockquote><p>创建分支</p></blockquote><pre><code>git branch dev  //创建 dev分支</code></pre><blockquote><p>切换分支</p></blockquote><pre><code>git checkout dev   //切换到 dev分支</code></pre><blockquote><p>创建&amp;&amp;切换分支</p></blockquote><pre><code>git checkout -b dev  //创建并且切换到dev分支</code></pre><blockquote><p>合并分支</p></blockquote><pre><code>git merge dev</code></pre><blockquote><p>删除分支</p></blockquote><pre><code>git branch -d dev</code></pre><blockquote><p>已合并的分支</p></blockquote><pre><code>git branch --merged</code></pre><blockquote><p>没有合并的分支</p></blockquote><pre><code>git branch --no-merged</code></pre><blockquote><p>删除没有合并的分支</p></blockquote><pre><code>git branch -D dev</code></pre><h4 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h4><blockquote><p>添加</p></blockquote><pre><code>git stash</code></pre><blockquote><p>查看列表</p></blockquote><pre><code>git stash list</code></pre><blockquote><p>恢复</p></blockquote><pre><code>git stash apply    //恢复全部git stash apply stash@{1}  //恢复第一个</code></pre><blockquote><p>删除</p></blockquote><pre><code>git stash pop</code></pre><blockquote><p>移除文件</p></blockquote><pre><code>git reset HEAD a.php  //移除a.php文件</code></pre><blockquote><p>恢复文件内容</p></blockquote><pre><code>git checkout -- a.php</code></pre><h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><blockquote><p>添加</p></blockquote><pre><code>git tab &#39;标签&#39;</code></pre><h4 id="生成压缩包"><a href="#生成压缩包" class="headerlink" title="生成压缩包"></a>生成压缩包</h4><pre><code>git archive master --prefix = &quot;naturalGao/&quot; --forma=zip &gt; natural.zip</code></pre><h4 id="移动master分支到最新"><a href="#移动master分支到最新" class="headerlink" title="移动master分支到最新"></a>移动master分支到最新</h4><pre><code>git rebase master</code></pre><h4 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支"></a>查看远程分支</h4><pre><code>git branch -a</code></pre><h4 id="拉取某个远程分支"><a href="#拉取某个远程分支" class="headerlink" title="拉取某个远程分支"></a>拉取某个远程分支</h4><pre><code>git pull origin dev:dev</code></pre><h4 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h4><pre><code>git push origin --delete dev</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;git 版本控制 常用的命令&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="https://naturalgao.github.io/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="https://naturalgao.github.io/tags/Git/"/>
+    
+  </entry>
+  
+</feed>

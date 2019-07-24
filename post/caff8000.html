@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta name="google-site-verification" content="DwDg4EuywHWNZUkTC7sG0WGv_UQekM4uRtOoaGuDJHc">
+<meta name="baidu-site-verification" content="hkLiBHH93D">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Git常用命令">
+
+
+
+
+  <meta name="keywords" content="Git,">
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NaturalGao">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://naturalgao.github.io/post/caff8000.html">
+
+
+<meta name="description" content="git 版本控制 常用的命令">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用命令">
+<meta property="og:url" content="https://naturalgao.github.io/post/caff8000.html">
+<meta property="og:site_name" content="NaturalGao">
+<meta property="og:description" content="git 版本控制 常用的命令">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-24T06:40:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git常用命令">
+<meta name="twitter:description" content="git 版本控制 常用的命令">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+
+  <link href="/plugins/prettify/prettify.css" rel="stylesheet">
+
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b733e1eaeacbf8f87d3be047f28c3973";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <title> Git常用命令 - NaturalGao </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">NaturalGao</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/atom.xml">
+                            
+                            
+                                订阅
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Git常用命令
+        
+      </h1>
+
+      <time class="post-time">
+          2019-07-15
+      </time>
+    </header>
+
+
+
+    
+            
+  <div class="toc-container">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#版本号"><span class="toc-text">版本号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alias"><span class="toc-text">alias</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#拉取"><span class="toc-text">拉取</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加文件"><span class="toc-text">添加文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修改文件名"><span class="toc-text">修改文件名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除文件"><span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#推送"><span class="toc-text">推送</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看状态"><span class="toc-text">查看状态</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#忽略文件"><span class="toc-text">忽略文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日志"><span class="toc-text">日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改最新一次提交"><span class="toc-text">修改最新一次提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分支"><span class="toc-text">分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#暂存区"><span class="toc-text">暂存区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#标签"><span class="toc-text">标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成压缩包"><span class="toc-text">生成压缩包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移动master分支到最新"><span class="toc-text">移动master分支到最新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看远程分支"><span class="toc-text">查看远程分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#拉取某个远程分支"><span class="toc-text">拉取某个远程分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除远程分支"><span class="toc-text">删除远程分支</span></a></li></ol>
+  </div> 
+
+
+            <div class="post-content">
+                <p>git 版本控制 常用的命令</p>
+<a id="more"></a>
+<h4 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h4><pre><code>git --version
+</code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><blockquote>
+<p>配置文件 为    <strong>~/.gitconfig（全局）</strong> <strong>.git/config （局部）</strong></p>
+</blockquote>
+<pre><code class="git">git config --global user.email &quot;xxxx@qq.com&quot;
+git config --global user.name &quot;xxxx&quot;
+
+# 生成秘钥
+ssh-keygen -t rsa -C &quot;xxx@qq.com&quot;
+
+# 测试
+ssh -T git@github.com
+</code></pre>
+<p>设置默认使用文本编辑器</p>
+<pre><code>git config --global core.editor sub1
+</code></pre><h4 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h4><blockquote>
+<p>取别名，缩减代码</p>
+</blockquote>
+<pre><code>git config --global alias.c commit
+</code></pre><h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><blockquote>
+<h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5></blockquote>
+<pre><code>git init
+</code></pre><blockquote>
+<h5 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h5></blockquote>
+<pre><code>git clone https://github.com/NaturalGao/naturalgao.github.io.git
+</code></pre><blockquote>
+<h5 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h5></blockquote>
+<pre><code>git add .       //添加全部文件
+git add a.php   //添加a.php文件
+</code></pre><blockquote>
+<h5 id="修改文件名"><a href="#修改文件名" class="headerlink" title="修改文件名"></a>修改文件名</h5></blockquote>
+<pre><code>git mv a.php b.php  //修改a.php文件名为b.php
+</code></pre><blockquote>
+<h5 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h5></blockquote>
+<pre><code>git rm a.txt   //版本库和本地文件都会删除
+git rm --cached a.txt //只删除版本库，保留本地
+
+</code></pre><blockquote>
+<h5 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h5></blockquote>
+<pre><code>git commit -m &quot;描述&quot;
+
+</code></pre><blockquote>
+<h5 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h5></blockquote>
+<pre><code>git status
+
+</code></pre><h4 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h4><blockquote>
+<p>文件： .gitignore</p>
+</blockquote>
+<pre><code>*.txt     //忽略所有txt文件
+/vendor   //忽略vendor文件夹
+
+</code></pre><h4 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h4><blockquote>
+<p>简单描述</p>
+</blockquote>
+<pre><code>git log
+
+</code></pre><blockquote>
+<p>查看变动信息</p>
+</blockquote>
+<pre><code>git log -p
+
+</code></pre><blockquote>
+<p>最近一次提交</p>
+</blockquote>
+<pre><code>git log -p -1
+
+</code></pre><blockquote>
+<p>查看简短信息</p>
+</blockquote>
+<pre><code>git log --oneline
+
+</code></pre><blockquote>
+<p>查看变动的文件</p>
+</blockquote>
+<pre><code>git log --name-only
+
+</code></pre><blockquote>
+<p>查看类型变化</p>
+</blockquote>
+<pre><code>git log --name-status
+
+</code></pre><h4 id="修改最新一次提交"><a href="#修改最新一次提交" class="headerlink" title="修改最新一次提交"></a>修改最新一次提交</h4><pre><code>git commit --amend
+
+</code></pre><h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><blockquote>
+<p>查看分支</p>
+</blockquote>
+<pre><code>git branch
+
+</code></pre><blockquote>
+<p>创建分支</p>
+</blockquote>
+<pre><code>git branch dev  //创建 dev分支
+
+</code></pre><blockquote>
+<p>切换分支</p>
+</blockquote>
+<pre><code>git checkout dev   //切换到 dev分支
+
+</code></pre><blockquote>
+<p>创建&amp;&amp;切换分支</p>
+</blockquote>
+<pre><code>git checkout -b dev  //创建并且切换到dev分支
+
+</code></pre><blockquote>
+<p>合并分支</p>
+</blockquote>
+<pre><code>git merge dev
+
+</code></pre><blockquote>
+<p>删除分支</p>
+</blockquote>
+<pre><code>git branch -d dev
+
+</code></pre><blockquote>
+<p>已合并的分支</p>
+</blockquote>
+<pre><code>git branch --merged
+
+</code></pre><blockquote>
+<p>没有合并的分支</p>
+</blockquote>
+<pre><code>git branch --no-merged
+
+</code></pre><blockquote>
+<p>删除没有合并的分支</p>
+</blockquote>
+<pre><code>git branch -D dev
+
+</code></pre><h4 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h4><blockquote>
+<p>添加</p>
+</blockquote>
+<pre><code>git stash
+
+</code></pre><blockquote>
+<p>查看列表</p>
+</blockquote>
+<pre><code>git stash list
+
+</code></pre><blockquote>
+<p>恢复</p>
+</blockquote>
+<pre><code>git stash apply    //恢复全部
+git stash apply stash@{1}  //恢复第一个
+
+</code></pre><blockquote>
+<p>删除</p>
+</blockquote>
+<pre><code>git stash pop
+
+</code></pre><blockquote>
+<p>移除文件</p>
+</blockquote>
+<pre><code>git reset HEAD a.php  //移除a.php文件
+
+</code></pre><blockquote>
+<p>恢复文件内容</p>
+</blockquote>
+<pre><code>git checkout -- a.php
+
+</code></pre><h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><blockquote>
+<p>添加</p>
+</blockquote>
+<pre><code>git tab &#39;标签&#39;
+
+</code></pre><h4 id="生成压缩包"><a href="#生成压缩包" class="headerlink" title="生成压缩包"></a>生成压缩包</h4><pre><code>git archive master --prefix = &quot;naturalGao/&quot; --forma=zip &gt; natural.zip
+
+</code></pre><h4 id="移动master分支到最新"><a href="#移动master分支到最新" class="headerlink" title="移动master分支到最新"></a>移动master分支到最新</h4><pre><code>git rebase master
+
+</code></pre><h4 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支"></a>查看远程分支</h4><pre><code>git branch -a
+
+</code></pre><h4 id="拉取某个远程分支"><a href="#拉取某个远程分支" class="headerlink" title="拉取某个远程分支"></a>拉取某个远程分支</h4><pre><code>git pull origin dev:dev
+
+</code></pre><h4 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h4><pre><code>git push origin --delete dev
+
+</code></pre>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+      <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <span>本文作者：</span>NaturalGao
+        </li>
+        <li class="post-copyright-link">
+          <span>本文链接：</span>
+          <a href="https://naturalgao.github.io//post/caff8000.html" title="Git常用命令">https://naturalgao.github.io/post/caff8000.html</a>
+        </li>
+        <li class="post-copyright-license">
+          <span>版权： </span>
+          本站文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议，请勿用于商业，转载注明出处！
+        </li>
+      </ul>
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Git/">Git</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/post/6b404b74.html">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Laravel 事件监听</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+      
+        
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'b3280731ffdf6d76fd46',
+            clientSecret: 'c8be25dc6a2e4b1dcafab6d6cce7242791f46a3e',
+            repo: 'naturalgao.github.io',
+            owner: 'NaturalGao',
+            admin: 'NaturalGao',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+      
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">NaturalGao.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+<!--prettify代码高亮脚本引入-->
+
+    <script src="/plugins/prettify/prettify.js"></script>
+    <script type="text/javascript">
+    jQuery(function($){
+        $('pre').addClass('prettyprint');
+        prettyPrint();
+    });
+    </script>
+
+
+  </body>
+</html>
