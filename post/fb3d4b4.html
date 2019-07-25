@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://naturalgao.github.io/Users/mac/Library/Application%20Support/typora-user-images/image-20190724233326358.png">
 <meta property="og:image" content="https://naturalgao.github.io/Users/mac/Library/Application%20Support/typora-user-images/image-20190724233429626.png">
 <meta property="og:image" content="https://naturalgao.github.io/Users/mac/Library/Application%20Support/typora-user-images/image-20190724234143661.png">
-<meta property="og:updated_time" content="2019-07-24T15:48:51.000Z">
+<meta property="og:updated_time" content="2019-07-25T03:29:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码风格配置">
 <meta name="twitter:description" content="引言在多人开发协作中，每个人的开发风格都不一样，遵循标准的代码规范有利于多人协作，日后的维护成本也低。 PHP_CodeSniffer基础这是一个代码风格检测工具，包含两个脚本：phpcs和phpcbf  phpcs  检测代码风格  phpcbf  修正代码风格 安装composer global require &amp;quot;squizlabs/php_codesniffer=*&amp;quot; 安">
@@ -167,7 +167,7 @@ var _hmt = _hmt || [];
     
             
   <div class="toc-container">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-CodeSniffer"><span class="toc-text">PHP_CodeSniffer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PhpStorm"><span class="toc-text">PhpStorm</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参数说明"><span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用方法"><span class="toc-text">使用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git提交时对代码进行检查"><span class="toc-text">git提交时对代码进行检查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Php-cc"><span class="toc-text">Php-cc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-1"><span class="toc-text">安装</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-CodeSniffer"><span class="toc-text">PHP_CodeSniffer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PhpStorm"><span class="toc-text">PhpStorm</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参数说明"><span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用方法"><span class="toc-text">使用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git提交时对代码进行检查"><span class="toc-text">git提交时对代码进行检查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Php-cc"><span class="toc-text">Php-cc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-1"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启phplint"><span class="toc-text">开启phplint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载"><span class="toc-text">卸载</span></a></li></ol></li></ol></li></ol>
   </div> 
 
 
@@ -215,7 +215,10 @@ Program：/Users/mac/.composer/vendor/bin/phpcs
 <pre><code>composer exec phpcc install
 </code></pre><p>该命令会检查phplint、phpcs的安装情况，并将git原有的pre-commit钩子备份，再将php-cc的pre-commit钩子拷贝至<code>.git/hooks</code>中。</p>
 <p>这样，在git commit之前，就会执行phplint和phpcs检查待提交的文件，如果不满足要求，则会阻止代码提交。</p>
-
+<h3 id="开启phplint"><a href="#开启phplint" class="headerlink" title="开启phplint"></a>开启phplint</h3><pre><code>composer exec -v phpcc config phplint/phpcs true/false
+</code></pre><p>true开启, false 关闭</p>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><pre><code>composer exec -v phpcc remote
+</code></pre>
             </div>
           
 
