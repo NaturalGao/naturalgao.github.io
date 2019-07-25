@@ -44,15 +44,15 @@
 <meta property="og:site_name" content="NaturalGao">
 <meta property="og:description" content="引言在多人开发协作中，每个人的开发风格都不一样，遵循标准的代码规范有利于多人协作，日后的维护成本也低。 PHP_CodeSniffer基础这是一个代码风格检测工具，包含两个脚本：phpcs和phpcbf  phpcs  检测代码风格  phpcbf  修正代码风格 安装composer global require &amp;quot;squizlabs/php_codesniffer=*&amp;quot; 安">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://naturalgao.github.io/images/image-20190724233041850.png">
-<meta property="og:image" content="https://naturalgao.github.io/images/image-20190724233326358.png">
-<meta property="og:image" content="https://naturalgao.github.io/images/image-20190724233429626.png">
-<meta property="og:image" content="https://naturalgao.github.io/images/image-20190724234143661.png">
-<meta property="og:updated_time" content="2019-07-25T03:39:34.000Z">
+<meta property="og:image" content="https://naturalgao.github.io/images/01/image-20190724233041850.png">
+<meta property="og:image" content="https://naturalgao.github.io/images/01/image-20190724233326358.png">
+<meta property="og:image" content="https://naturalgao.github.io/images/01/image-20190724233429626.png">
+<meta property="og:image" content="https://naturalgao.github.io/images/01/image-20190724234143661.png">
+<meta property="og:updated_time" content="2019-07-25T03:45:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码风格配置">
 <meta name="twitter:description" content="引言在多人开发协作中，每个人的开发风格都不一样，遵循标准的代码规范有利于多人协作，日后的维护成本也低。 PHP_CodeSniffer基础这是一个代码风格检测工具，包含两个脚本：phpcs和phpcbf  phpcs  检测代码风格  phpcbf  修正代码风格 安装composer global require &amp;quot;squizlabs/php_codesniffer=*&amp;quot; 安">
-<meta name="twitter:image" content="https://naturalgao.github.io/images/image-20190724233041850.png">
+<meta name="twitter:image" content="https://naturalgao.github.io/images/01/image-20190724233041850.png">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -187,7 +187,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>window下 是.bat</p>
 </blockquote>
-<p><img src="/images/image-20190724233041850.png" alt="image-20190724233041850"></p>
+<p><img src="/images/01/image-20190724233041850.png" alt="image-20190724233041850"></p>
 <blockquote>
 <p>查看composer全局依赖包路径</p>
 </blockquote>
@@ -196,11 +196,11 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>添加 phpcs</p>
 </blockquote>
-<p><img src="/images/image-20190724233326358.png" alt="image-20190724233326358"></p>
+<p><img src="/images/01/image-20190724233326358.png" alt="image-20190724233326358"></p>
 <blockquote>
 <p>添加phpcbf</p>
 </blockquote>
-<p><img src="/images/image-20190724233429626.png" alt="image-20190724233429626"></p>
+<p><img src="/images/01/image-20190724233429626.png" alt="image-20190724233429626"></p>
 <h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p>Program：全局composer依赖包phpcs/phpcbf路径</p>
 <p>例如我的安装路径为：</p>
 <pre><code>/Users/mac/.composer/vendor/bin/phpcs
@@ -208,7 +208,7 @@ var _hmt = _hmt || [];
 Program：/Users/mac/.composer/vendor/bin/phpcs
 </code></pre><p>Arguments:：是<code>$FileDir$/$FileName$</code></p>
 <p>Working directory：是<code>$ProjectFileDir$</code></p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p><img src="/images/image-20190724234143661.png" alt="image-20190724234143661"></p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p><img src="/images/01/image-20190724234143661.png" alt="image-20190724234143661"></p>
 <h1 id="git提交时对代码进行检查"><a href="#git提交时对代码进行检查" class="headerlink" title="git提交时对代码进行检查"></a>git提交时对代码进行检查</h1><h2 id="Php-cc"><a href="#Php-cc" class="headerlink" title="Php-cc"></a>Php-cc</h2><p>PHP code check 利用git hook、phplint、phpcs，在code commit的时候对php代码进行语法检测、代码风格检查，如果有问题，不允许提交。<a href="https://github.com/wowo-zZ/php-cc" target="_blank" rel="noopener">github</a></p>
 <h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><pre><code>composer require zhenggui/php-cc
 </code></pre><p>安装成功后执行</p>
