@@ -1,4 +1,9 @@
-# 重捨PHP系列——开篇
+---
+title: 重拾PHP——开篇
+tags: PHP
+abbrlink: 720d6adb
+date: 2019-12-08 13:51:29
+---
 
 ## 1. 自我介绍
 
