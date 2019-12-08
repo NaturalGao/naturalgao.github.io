@@ -19,13 +19,13 @@ tags:
 
 ​						我们需要根据类型radio组件的状态来控制教师的select组件。
 
-![image-20191208143100238](/Users/mac/Library/Application Support/typora-user-images/image-20191208143100238.png)
+![image-20191208143100238](/images/02/Snipaste_2019-12-08_15-07-26.png)
 
 ​		那如何实现呢？我翻遍了官方文档，发现并没有提供这一功能。于是我想着要不自己写一个扩展，在写之前我在网上找了各种包，发现了个非常好用的包，嘻嘻~~~
 
 ​		最终效果：
 
-![gifhome_544x960_5s](/Users/mac/Downloads/gifhome_544x960_5s.gif)
+![gifhome_544x960_5s](/images/02/gifhome_544x960_5s.gif)
 
 ​		
 
@@ -34,4 +34,3 @@ tags:
 ​		向提供者致敬，[传送门](https://github.com/zuweie/FieldInteraction)
 
 ​		传送门有详细的使用介绍，这里我就不做教程了，希望对在看的你有帮助。
-
