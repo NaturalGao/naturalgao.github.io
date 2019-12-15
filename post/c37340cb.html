@@ -36,18 +36,18 @@
 <link rel="canonical" href="https://naturalgao.github.io/post/c37340cb.html">
 
 
-<meta name="description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 1. 表 修改表名字  ALTER TABLE stu RENAME stus RENAME TABLE stus to stu  生成备份表  CREATE TABLE stu_bak SELECT * FROM stu  修改字符集  // 修改字符集为 gbk ALTER TABLE stu_b">
+<meta name="description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 或者 RENAME TABLE post to posts;  修改字符集ALTER TABLE posts charset gbk;  清空表数据DELETE FROM posts;   这种方式是一条一条的删除，有点慢.可以使用以下方式  TRUNCATE posts;  删除表DROP TABL">
 <meta name="keywords" content="Database">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库维护命令">
 <meta property="og:url" content="https://naturalgao.github.io/post/c37340cb.html">
 <meta property="og:site_name" content="NaturalGao">
-<meta property="og:description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 1. 表 修改表名字  ALTER TABLE stu RENAME stus RENAME TABLE stus to stu  生成备份表  CREATE TABLE stu_bak SELECT * FROM stu  修改字符集  // 修改字符集为 gbk ALTER TABLE stu_b">
+<meta property="og:description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 或者 RENAME TABLE post to posts;  修改字符集ALTER TABLE posts charset gbk;  清空表数据DELETE FROM posts;   这种方式是一条一条的删除，有点慢.可以使用以下方式  TRUNCATE posts;  删除表DROP TABL">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-12-08T05:40:46.474Z">
+<meta property="og:updated_time" content="2019-12-15T09:30:38.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库维护命令">
-<meta name="twitter:description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 1. 表 修改表名字  ALTER TABLE stu RENAME stus RENAME TABLE stus to stu  生成备份表  CREATE TABLE stu_bak SELECT * FROM stu  修改字符集  // 修改字符集为 gbk ALTER TABLE stu_b">
+<meta name="twitter:description" content="前言数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的 或者 RENAME TABLE post to posts;  修改字符集ALTER TABLE posts charset gbk;  清空表数据DELETE FROM posts;   这种方式是一条一条的删除，有点慢.可以使用以下方式  TRUNCATE posts;  删除表DROP TABL">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -162,78 +162,85 @@ var _hmt = _hmt || [];
     
             
   <div class="toc-container">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-表"><span class="toc-text">1. 表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-字段"><span class="toc-text">2. 字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主键"><span class="toc-text">主键</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改字符集"><span class="toc-text">修改字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清空表数据"><span class="toc-text">清空表数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除表"><span class="toc-text">删除表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字段"><span class="toc-text">字段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改类型"><span class="toc-text">修改类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改字段名和类型"><span class="toc-text">修改字段名和类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加字段"><span class="toc-text">添加字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除字段"><span class="toc-text">删除字段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主键"><span class="toc-text">主键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移除自增列"><span class="toc-text">移除自增列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移除主键"><span class="toc-text">移除主键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加主键"><span class="toc-text">添加主键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加自增列"><span class="toc-text">添加自增列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加主键和自增列"><span class="toc-text">添加主键和自增列</span></a></li></ol></li></ol>
   </div> 
 
 
             <div class="post-content">
                 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><u>数据库维护频率较低，也有很多可视化管理工具，但作为程序员，还是有必要了解下维护数据库表命令的</u></p>
-<h4 id="1-表"><a href="#1-表" class="headerlink" title="1. 表"></a>1. 表</h4><blockquote>
-<p>修改表名字</p>
-</blockquote>
-<pre><code>ALTER TABLE stu RENAME stus
-RENAME TABLE stus to stu
-</code></pre><blockquote>
-<p>生成备份表</p>
-</blockquote>
-<pre><code>CREATE TABLE stu_bak SELECT * FROM stu
-</code></pre><blockquote>
-<p>修改字符集</p>
-</blockquote>
-<pre><code>// 修改字符集为 gbk
-ALTER TABLE stu_bak charset gbk
-</code></pre><blockquote>
-<p>清空表数据</p>
-</blockquote>
-<pre><code>DELETE FROM stu_bak
-TRUNCATE stu_bak
-</code></pre><blockquote>
-<p>删除表</p>
-</blockquote>
-<pre><code>DROP TABLE stu_bak
-DROP TABLE if EXISTS stu_bak    //加条件判断,存在才删除
-</code></pre><h4 id="2-字段"><a href="#2-字段" class="headerlink" title="2. 字段"></a>2. 字段</h4><blockquote>
-<p>修改字段</p>
-</blockquote>
-<pre><code>ALTER TABLE stu2 MODIFY sname varchar(50) no null
-ALTER TABLE stu2 CHANGE sname name char(30) no null
-</code></pre><blockquote>
-<p>添加字段</p>
-</blockquote>
-<pre><code>//添加 字段 sex  类型为 smallint 默认 null
-ALTER TABLE stu2 ADD sex smallint default null
-</code></pre><blockquote>
-<p>移动位置</p>
-</blockquote>
-<pre><code>// 添加emailt 字段 并且移动到 id 后面
-ALTER TABLE stu2 ADD email varchar(50) default null AFTER id
-// 添加字段到 第一个位置
-ALTER TABLE stu2 ADD qq varchar(30) default null first
-</code></pre><blockquote>
-<p>删除字段</p>
-</blockquote>
-<pre><code>ALTER TABLE stu2 drop sex;
-</code></pre><h4 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h4><blockquote>
-<p>添加主键 </p>
-</blockquote>
-<pre><code>ALTER TABLE stu ADD PRIMARY KEY (id)
-</code></pre><blockquote>
-<p>添加自增列</p>
-</blockquote>
-<pre><code>ALTER TABLE stu MONIFY id int not null AUTO_INCREMENT
-</code></pre><blockquote>
-<p>去除自增列</p>
-</blockquote>
-<pre><code>ALTER TABLE stu MODIFY id init no null
-</code></pre><blockquote>
-<p>删除主键 (必须去除自增列)</p>
-</blockquote>
-<pre><code>ALTER TABLE stu DROP PRIMARY KEY
-</code></pre><blockquote>
-<p>添加自增和主键</p>
-</blockquote>
-<pre><code>ALTER TABLE stu MODIFY id int not null AUTO_INCREMENT,add PRIMARY key(id)
+<p>或者</p>
+<pre><code class="mysql">RENAME TABLE post to posts;
 </code></pre>
+<h3 id="修改字符集"><a href="#修改字符集" class="headerlink" title="修改字符集"></a>修改字符集</h3><pre><code class="mysql">ALTER TABLE posts charset gbk;
+</code></pre>
+<h3 id="清空表数据"><a href="#清空表数据" class="headerlink" title="清空表数据"></a>清空表数据</h3><pre><code class="mysql">DELETE FROM posts;
+</code></pre>
+<blockquote>
+<p>这种方式是一条一条的删除，有点慢.可以使用以下方式</p>
+</blockquote>
+<pre><code class="mysql">TRUNCATE posts;
+</code></pre>
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><pre><code class="mysql">DROP TABLE posts;
+</code></pre>
+<blockquote>
+<p>加条件，判断表是否存在,避免报错。</p>
+</blockquote>
+<pre><code class="mysql">DROP TABLE if EXISTS posts;
+</code></pre>
+<h2 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h2><h3 id="修改类型"><a href="#修改类型" class="headerlink" title="修改类型"></a>修改类型</h3><blockquote>
+<p>修改<strong>title</strong>字段为字符串并且不能为空</p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts MODIFY title vachar(50) not null;
+</code></pre>
+<h3 id="修改字段名和类型"><a href="#修改字段名和类型" class="headerlink" title="修改字段名和类型"></a>修改字段名和类型</h3><blockquote>
+<p>将字段<strong>title</strong>修改为<strong>name</strong>，并且修改类型为<strong>char(30) 不能为null</strong></p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts CHANGE title name char(30) not null;
+</code></pre>
+<h3 id="添加字段"><a href="#添加字段" class="headerlink" title="添加字段"></a>添加字段</h3><blockquote>
+<p>添加一个 <strong>content</strong> 字段，类型为 text</p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts ADD content text;
+</code></pre>
+<blockquote>
+<p>插入到某个字段后面</p>
+</blockquote>
+<p>插入到<strong>title</strong>的后面</p>
+<pre><code class="mysql">ALTER TABLE posts ADD content text AFTER title;
+</code></pre>
+<blockquote>
+<p>插入到最前面</p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts ADD content text first;
+</code></pre>
+<h3 id="删除字段"><a href="#删除字段" class="headerlink" title="删除字段"></a>删除字段</h3><blockquote>
+<p>删除 <strong>content</strong> 字段</p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts drop content;
+</code></pre>
+<h2 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h2><h3 id="移除自增列"><a href="#移除自增列" class="headerlink" title="移除自增列"></a>移除自增列</h3><blockquote>
+<p>移除id自增</p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts MODIFY id int not null;
+</code></pre>
+<h3 id="移除主键"><a href="#移除主键" class="headerlink" title="移除主键"></a>移除主键</h3><blockquote>
+<p>要先移除自增列，才可以移除主键成功</p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts drop PRIMARY key;
+</code></pre>
+<h3 id="添加主键"><a href="#添加主键" class="headerlink" title="添加主键"></a>添加主键</h3><blockquote>
+<p>添加id主键</p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts ADD PRIMARY key (id);
+</code></pre>
+<h3 id="添加自增列"><a href="#添加自增列" class="headerlink" title="添加自增列"></a>添加自增列</h3><blockquote>
+<p>添加id 自增</p>
+</blockquote>
+<pre><code class="mysql">ALTER TABLE posts MODIFY id int not null AUTO_INCREMENT;
+</code></pre>
+<h3 id="添加主键和自增列"><a href="#添加主键和自增列" class="headerlink" title="添加主键和自增列"></a>添加主键和自增列</h3><pre><code class="mysql">ALTER TABLE posts MODIFY id int not null AUTO_INCREMENT,ADD PRIMARY key (id);
+</code></pre>
+
             </div>
           
 
