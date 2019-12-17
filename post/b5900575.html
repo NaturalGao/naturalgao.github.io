@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta name="google-site-verification" content="DwDg4EuywHWNZUkTC7sG0WGv_UQekM4uRtOoaGuDJHc">
+<meta name="baidu-site-verification" content="hkLiBHH93D">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="硬链接与软链接详解">
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NaturalGao">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://naturalgao.github.io/post/b5900575.html">
+
+
+<meta name="description" content="引言Linux基础是非常重要得，无论是工作还是我们平时得学习，掌握Linux对你的学习道路一定能提供不少帮助。 下面简单的介绍下Linux中的硬链接和软连接，为了你更好的理解我下面的分享，你需要掌握Linux中的inode概念，如果你还不知道，推荐你到我的另一篇分享，先了解inode。传送门 硬链接什么是硬链接Linux中文件的inode号码与文件名一般都是一对一的关系，但是也可以多个一对多（多个">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="硬链接与软链接详解">
+<meta property="og:url" content="https://naturalgao.github.io/post/b5900575.html">
+<meta property="og:site_name" content="NaturalGao">
+<meta property="og:description" content="引言Linux基础是非常重要得，无论是工作还是我们平时得学习，掌握Linux对你的学习道路一定能提供不少帮助。 下面简单的介绍下Linux中的硬链接和软连接，为了你更好的理解我下面的分享，你需要掌握Linux中的inode概念，如果你还不知道，推荐你到我的另一篇分享，先了解inode。传送门 硬链接什么是硬链接Linux中文件的inode号码与文件名一般都是一对一的关系，但是也可以多个一对多（多个">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/ZCQFmdYpZZ.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/RFDPGN2YBE.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/F2G6ycARnB.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/l0TPf6n9Vt.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/gdtbBPJO5z.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/wOvjJltdEn.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/tjz8wvW2sz.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/7rQR3rXp8g.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/uFjuoEgQeF.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/DGkTmuHA8d.png!large">
+<meta property="og:updated_time" content="2019-12-17T04:43:47.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="硬链接与软链接详解">
+<meta name="twitter:description" content="引言Linux基础是非常重要得，无论是工作还是我们平时得学习，掌握Linux对你的学习道路一定能提供不少帮助。 下面简单的介绍下Linux中的硬链接和软连接，为了你更好的理解我下面的分享，你需要掌握Linux中的inode概念，如果你还不知道，推荐你到我的另一篇分享，先了解inode。传送门 硬链接什么是硬链接Linux中文件的inode号码与文件名一般都是一对一的关系，但是也可以多个一对多（多个">
+<meta name="twitter:image" content="https://cdn.learnku.com/uploads/images/201912/17/29780/ZCQFmdYpZZ.png!large">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+
+  <link href="/plugins/prettify/prettify.css" rel="stylesheet">
+
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b733e1eaeacbf8f87d3be047f28c3973";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <title> 硬链接与软链接详解 - NaturalGao </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">NaturalGao</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/atom.xml">
+                            
+                            
+                                订阅
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          硬链接与软链接详解
+        
+      </h1>
+
+      <time class="post-time">
+          2019-12-17
+      </time>
+    </header>
+
+
+
+    
+            
+  <div class="toc-container">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬链接"><span class="toc-text">硬链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是硬链接"><span class="toc-text">什么是硬链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软链接"><span class="toc-text">软链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#硬链接和软连接区别"><span class="toc-text">硬链接和软连接区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-1"><span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#篇尾"><span class="toc-text">篇尾</span></a></li></ol>
+  </div> 
+
+
+            <div class="post-content">
+                <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Linux基础是非常重要得，无论是工作还是我们平时得学习，掌握Linux对你的学习道路一定能提供不少帮助。</p>
+<p>下面简单的介绍下Linux中的<strong>硬链接</strong>和<strong>软连接</strong>，为了你更好的理解我下面的分享，你需要掌握Linux中的inode概念，如果你还不知道，推荐你到我的另一篇分享，先了解inode。<a href="https://naturalgao.github.io/post/9e71d83.html">传送门</a></p>
+<h2 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h2><h3 id="什么是硬链接"><a href="#什么是硬链接" class="headerlink" title="什么是硬链接"></a>什么是硬链接</h3><p>Linux中文件的<strong>inode</strong>号码与文件名一般都是一对一的关系，但是也可以多个一对多（多个文件名指向一个inode号码），称为硬链接。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li><p>可以用不同的文件名访问同样的内容</p>
+</li>
+<li><p>对其中一个文件内容修改时，会影响到其他文件的内容。</p>
+</li>
+<li><p>删除其中一个文件时，其他文件可以正常访问，不受影响</p>
+</li>
+</ol>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p><strong>首先,创建一个测试文件一，并写入 “做个哎记录的人”</strong></p>
+<pre><code>vim 1.txt
+</code></pre><p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/ZCQFmdYpZZ.png!large" alt="Laravel"></p>
+<p>接着创建一个<strong>硬链接</strong></p>
+<p>格式：ln 源文件 目标文件</p>
+<pre><code>ln 1.txt 2.txt
+</code></pre><p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/RFDPGN2YBE.png!large" alt="Laravel"></p>
+<p><strong>可以看到执行命令后多了个2.txt</strong></p>
+<p><strong>我们打开2.txt看看~~</strong></p>
+<pre><code>vim 2.txt
+</code></pre><p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/F2G6ycARnB.png!large" alt="Laravel"></p>
+<p>发现内容跟1.txt 一样，跟copy差不多，但也是有取别：</p>
+<p><strong>硬链接，无论是修改源文件还是目标文件，是会影响其它文件的，而copy后的文件修改是不会影响源文件的，而为什么不会影响到呢，无非就是inode的问题</strong></p>
+<p>我 copy 2.txt 到 3.txt,</p>
+<p>我们可以通过一下命令来查看区别：</p>
+<pre><code>ls -i
+</code></pre><p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/l0TPf6n9Vt.png!large" alt="Laravel"></p>
+<p><strong>从图中可以发现, 1和2的 inode号码是一样的，所以修改其中一个文件，其余文件内容会随之变化. copy出来的3.txt 生成了个新的inode号码，所以是不会影响源文件的。所以验证了我们上面那个结论。</strong></p>
+<p>我们再验证一下，修改 inode号码一样的文件，其它文件是否会随之改变。</p>
+<p>我打开2.txt 修改里面的内容，看1.txt是否有更新</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/gdtbBPJO5z.png!large" alt="Laravel"></p>
+<p>发现1.txt也更新了</p>
+<p><strong>验证了我们的1,2条结论。</strong></p>
+<p>那我们把 2.txt 删除试试</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/wOvjJltdEn.png!large" alt="Laravel"></p>
+<p><strong>发现 1.txt 还在，第三条结论也没有问题。</strong></p>
+<h2 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h2><p>通过上面的验证，相信大家对Linux 的<strong>硬链接</strong>，应该掌握得差不多了，那我们接着来讲讲<strong>软连接</strong>，如果你已经掌握了<strong>硬链接</strong>，那<strong>软连接</strong> 很快就能掌握。</p>
+<h3 id="硬链接和软连接区别"><a href="#硬链接和软连接区别" class="headerlink" title="硬链接和软连接区别"></a>硬链接和软连接区别</h3><ol>
+<li><p>硬链接inode号码一致，软连接相反。</p>
+</li>
+<li><p>硬链接读的内容是不同文件的内容，软连读的是源文件的内容。</p>
+</li>
+</ol>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>通过以下命令创建一个<strong>软连接</strong></p>
+<p>命令结构：ln 源文件 目标文件</p>
+<pre><code>ln -s 1.txt 2.txt
+</code></pre><p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/tjz8wvW2sz.png!large" alt="Laravel"></p>
+<p><strong>观察2.txt 后面，什么意思呢，就是 把2.txt路径指向1.txt的路径，当我们访问2.txt的时候，实际读取的是1.txt的内容。</strong></p>
+<p>我们访问 2.txt看看</p>
+<pre><code>vim 2.txt
+</code></pre><p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/7rQR3rXp8g.png!large" alt="Laravel"></p>
+<p>内容一致，没问题。怎么验证我们上面说的实际读取的是1.txt的内容呢？很好验证，我们把1.txt删除了。</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/uFjuoEgQeF.png!large" alt="Laravel"></p>
+<p>明显看到,删除1.txt 后 字变红了，为什么呢？很好理解，有错误，文件找不到了嘛，我们把1.txt删除了，而2.txt还指向1.txt，一个不存在的文件。</p>
+<p>我们试着访问下2.txt</p>
+<pre><code>cat 2.txt
+</code></pre><p><img src="https://cdn.learnku.com/uploads/images/201912/17/29780/DGkTmuHA8d.png!large" alt="Laravel"></p>
+<p><strong>发现报了个错误，文件找不到，所以我们的结论没有问题。</strong></p>
+<h2 id="篇尾"><a href="#篇尾" class="headerlink" title="篇尾"></a>篇尾</h2><p>相信到这里你对Linux的 inode 、硬链接、软连接已经掌握得差不多了，希望能帮助到在看得你。</p>
+<p><a href="https://naturalgao.github.io/">个人博客</a></p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+      <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <span>本文作者：</span>NaturalGao
+        </li>
+        <li class="post-copyright-link">
+          <span>本文链接：</span>
+          <a href="https://naturalgao.github.io//post/b5900575.html" title="硬链接与软链接详解">https://naturalgao.github.io/post/b5900575.html</a>
+        </li>
+        <li class="post-copyright-license">
+          <span>版权： </span>
+          本站文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议，请勿用于商业，转载注明出处！
+        </li>
+      </ul>
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Linux/">Linux</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/post/9e71d83.html">
+        <span class="next-text nav-default">你真的对 Linux 中的 Inode 了解吗？</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+      
+        
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'b3280731ffdf6d76fd46',
+            clientSecret: 'c8be25dc6a2e4b1dcafab6d6cce7242791f46a3e',
+            repo: 'naturalgao.github.io',
+            owner: 'NaturalGao',
+            admin: 'NaturalGao',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+      
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">NaturalGao.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+<!--prettify代码高亮脚本引入-->
+
+    <script src="/plugins/prettify/prettify.js"></script>
+    <script type="text/javascript">
+    jQuery(function($){
+        $('pre').addClass('prettyprint');
+        prettyPrint();
+    });
+    </script>
+
+
+  </body>
+</html>
