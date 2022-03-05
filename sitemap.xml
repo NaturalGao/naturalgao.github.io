@@ -144,13 +144,6 @@
   </url>
   
   <url>
-    <loc>https://naturalgao.github.io/tags/Laravel/</loc>
-    <lastmod>2022-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://naturalgao.github.io/tags/PHP/</loc>
     <lastmod>2022-03-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -159,6 +152,13 @@
   
   <url>
     <loc>https://naturalgao.github.io/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/</loc>
+    <lastmod>2022-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://naturalgao.github.io/tags/Laravel/</loc>
     <lastmod>2022-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
